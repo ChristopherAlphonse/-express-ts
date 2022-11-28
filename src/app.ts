@@ -1,10 +1,11 @@
 import * as dotenv from "dotenv";
-dotenv.config({ path: __dirname + "/.env" });
 
-import express from "express";
 import bodyParser from "body-parser";
-import cors from "cors";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+import express from "express";
+
+dotenv.config({ path: __dirname + "/.env" });
 
 const allowedOrigins = ["http://localhost:5173/"];
 
@@ -27,5 +28,5 @@ app.use(cors(options));
 const PORT = parseInt(process.env.PORT as string, 10) || 8081;
 
 app.listen(PORT, () => {
-  console.log(`App is running on 😇 ${PORT}`);
+  console.log(`App is running on 🚀  ${PORT}`);
 });

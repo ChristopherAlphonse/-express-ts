@@ -27,11 +27,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv = __importStar(require("dotenv"));
-dotenv.config({ path: __dirname + "/.env" });
-const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
-const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const cors_1 = __importDefault(require("cors"));
+const express_1 = __importDefault(require("express"));
+dotenv.config({ path: __dirname + "/.env" });
 const allowedOrigins = ["http://localhost:5173/"];
 const options = {
     origin: allowedOrigins,
@@ -48,6 +48,6 @@ app.use(body_parser_1.default.json());
 app.use((0, cors_1.default)(options));
 const PORT = parseInt(process.env.PORT, 10) || 8081;
 app.listen(PORT, () => {
-    console.log(`App is running on 😇 ${PORT}`);
+    console.log(`App is running on 🚀  ${PORT}`);
 });
 //# sourceMappingURL=app.js.map
