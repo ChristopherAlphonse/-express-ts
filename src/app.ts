@@ -5,9 +5,9 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
 
-dotenv.config({ path: __dirname + "/.env" });
+dotenv.config({ path: __dirname + "/.env" }); // env file is expose, dont forget to include in the .gitignore file
 
-const allowedOrigins = ["http://localhost:5173/"];
+const allowedOrigins = ["http://localhost:5173/"]; // the URI you want CORS to allow
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins,
@@ -17,7 +17,7 @@ const app = express();
 
 app.use(express.json());
 app.get("/", (req, res) => {
-  res.send("Home Page");
+  res.send("Welcome to the Home Page");
 });
 app.use(express.json());
 app.use(cookieParser());

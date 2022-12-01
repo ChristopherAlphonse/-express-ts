@@ -31,15 +31,15 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
-dotenv.config({ path: __dirname + "/.env" });
-const allowedOrigins = ["http://localhost:5173/"];
+dotenv.config({ path: __dirname + "/.env" }); // env file is expose, dont forget to include in the .gitignore file
+const allowedOrigins = ["http://localhost:5173/"]; // the URI you want CORS to allow
 const options = {
     origin: allowedOrigins,
 };
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.get("/", (req, res) => {
-    res.send("Home Page");
+    res.send("Welcome to the Home Page");
 });
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
