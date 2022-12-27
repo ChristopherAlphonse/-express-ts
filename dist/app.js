@@ -31,13 +31,28 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
+const helmet_1 = __importDefault(require("helmet"));
+const passport_1 = __importDefault(require("passport"));
+const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 dotenv.config({ path: __dirname + "/.env" }); // env file is expose, dont forget to include in the .gitignore file
 const allowedOrigins = ["http://localhost:5173/"]; // the URI you want CORS to allow
+const rateLimitOptions = {
+    windowMs: 15 * 60 * 1000,
+    max: 100, // limit each IP to 100 requests per windowMs
+};
 const options = {
     origin: allowedOrigins,
 };
 const app = (0, express_1.default)();
+app.use(passport_1.default.initialize());
+app.use((0, express_rate_limit_1.default)(rateLimitOptions));
+app.use(helmet_1.default.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+    },
+}));
 app.use(express_1.default.json());
+app.use((0, helmet_1.default)());
 app.get("/", (req, res) => {
     res.send("Sever Up");
 });
