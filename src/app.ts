@@ -32,10 +32,12 @@ app.use(
   })
 );
 
+const PORT = parseInt(process.env.PORT as string, 10) || 8081;
+
 app.use(express.json());
 app.use(helmet());
 app.get("/", (req, res) => {
-  res.send("Sever Up");
+  res.send(`Server is Operating ${PORT}`);
 });
 app.use(express.json());
 app.use(cookieParser());
@@ -43,7 +45,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors(options));
 
-const PORT = parseInt(process.env.PORT as string, 10) || 8081;
+
 
 app.listen(PORT, () => {
   console.log(`App is running on 🚀  ${PORT}`);
